@@ -47,8 +47,13 @@ function runTimer() {
     validateTime();
 
     timerTimeout = setTimeout(() => {
-      throwNotification();
       resetTimer();
+      
+      try {
+        throwNotification();
+      } catch (error) {
+        alert(error.message);
+      }
     }, time * 1000);
 
     timerInterval = setInterval(() => {
