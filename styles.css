@@ -1,0 +1,305 @@
+:root {
+  --green: #6FCF97;
+  --white: #FFFFFF;
+  --red: #EB5757;
+  --gray: #BDBDBD;
+  --gray-line: #E0E0E0;
+  --yellow: #F2C94C;
+  --gray-text: #37352F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  width: min(600px, 90vw);
+  height: 100vh;
+
+  margin: auto;
+
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+.inactive {
+  display: none!important;
+}
+
+/* Header ==================================================== */
+#logo {
+  margin-top: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo > h1 {
+  color: var(--gray-text);
+  margin-left: 2rem;
+}
+
+/* Main ====================================================== */
+.content {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.counter > span {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 6rem;
+}
+
+hr {
+  width: 90%;
+
+  border: 1px solid var(--gray-line);
+}
+
+.buttons {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-top: 2rem;
+}
+
+.button {
+  border: none;
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+
+main > .buttons > button {
+  font-size: 1.25rem;
+
+  height: 3.5rem;
+  width: 40%;
+}
+
+button#start {
+  color: var(--white);
+  background-color: var(--green);
+}
+
+button#set-timer {
+  color: var(--white);
+  background-color: var(--gray);
+}
+
+button#stop, button#resume {
+  color: var(--white);
+  background-color: var(--yellow);
+}
+
+button#reset {
+  color: var(--white);
+  background-color: var(--red);
+}
+
+/* Footer ================================================= */
+footer {
+  text-align: center;
+
+  align-self: flex-end;
+  padding-bottom: 1.5rem;
+}
+
+footer > a {
+  color: var(--gray-text);
+}
+
+/* Modal Set Timer Value ------------------------------ */
+.modal-container {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  position: relative  ;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+  max-width: 400px;
+
+  padding: 1.5rem 2rem;
+  background-color: var(--white);
+
+  border-radius: 0.5rem;  
+  box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal > h2 {
+  color: var(--gray-text);
+  font-weight: normal;
+}
+
+#form-timer {
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-top: 1.5rem;
+}
+
+.label-group {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.label-group > label {
+  font-size: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.input-group {
+  width: 100%;
+  margin-top: 0.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr 20px 1fr;
+}
+
+.colon {
+  text-align: center;
+}
+
+#form-timer > .input-group > input {
+  font-family: 'Roboto Mono', monospace;
+
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-button {
+  width: 80%;
+
+  margin-top: 1.25rem;
+  padding: 0.75rem 2.5rem;
+  
+  font-size: 1rem;
+  
+  color: var(--white);
+  background-color: var(--green);
+}
+
+#close-timer-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  cursor: pointer;
+}
+
+/* Info and Attribution ======================================================= */
+#info {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  text-align: right;
+
+  cursor: pointer;
+  background-color: var(--white);
+}
+
+#attribution {
+  display: none;
+}
+
+#attribution > a{
+  color: var(--gray-text);
+}
+
+#info > span:hover + #attribution {
+  display: block;
+  
+  position: relative;
+  z-index: 1;
+  
+  transform: translateY(16px);
+
+  border: 1px solid var(--gray-line);
+  border-radius: 0.5rem 2px 0.5rem 0.5rem;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+
+  padding: 1rem;
+}
+
+#info > span:hover + #attribution::after {
+  content: "";
+  background: var(--white);
+  width: 16px;
+  height: 16px;
+
+  position: absolute;
+  top: -9px;
+  right: 3px;
+
+  transform: rotate(45deg);
+  
+  border-top: 1px solid var(--gray-line);
+  border-left: 1px solid var(--gray-line);
+}
+
+/* Responsive ========================================== */
+@media (max-width: 540px) {
+  .counter > span {
+    font-size: 4rem;
+  }
+
+  .buttons {
+    flex-direction: column;    
+  }
+
+  main > .buttons > .button {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .counter > span {
+    font-size: 3rem;
+  }
+}
