@@ -52,7 +52,7 @@ function runTimer() {
       try {
         throwNotification();
       } catch (error) {
-        alert(error.message);
+        playAlarmSound();
       }
     }, time * 1000);
 
@@ -129,9 +129,15 @@ function validateTime() {
 Notification.requestPermission();
 
 function throwNotification() {
+  playAlarmSound();
+  
   if (Notification.permission === 'granted') {
     new Notification('Tempo esgotado ⏰', {
       body: 'Seu tempo acabou. Defina um novo tempo para continuar!',
     });
   }
+}
+
+function playAlarmSound() {
+  new Audio('./assets/alarm.mp3').play();
 }
