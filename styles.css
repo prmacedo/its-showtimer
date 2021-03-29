@@ -234,13 +234,14 @@ label {
 
 /* Info and Attribution ======================================================= */
 #info {
+  max-width: 70%;
+
   position: absolute;
   top: 2rem;
   right: 2rem;
   text-align: right;
 
   cursor: pointer;
-  background-color: var(--white);
 }
 
 #attribution {
@@ -253,6 +254,7 @@ label {
 
 #info > span:hover + #attribution {
   display: block;
+  background-color: var(--white);
   
   position: relative;
   z-index: 1;
