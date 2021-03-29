@@ -36,8 +36,10 @@ function formatTime(time) {
 }
 
 function startTimer() {
-  toogleButtons();
-  runTimer();  
+  const isRunning = runTimer();
+  if (isRunning) {
+    toogleButtons();    
+  }
 }
 
 function runTimer() {
@@ -56,8 +58,12 @@ function runTimer() {
 
       setTimerFields(hours, minutes, seconds);
     }, 1000);
+
+    return true;
   } catch (error) {
     alert(error.message);
+
+    return false;
   }
 }
 
